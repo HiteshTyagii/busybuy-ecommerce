@@ -1,0 +1,70 @@
+.orders-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.orders-container h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.orders-empty {
+  text-align: center;
+  margin-top: 50px;
+  color: #666;
+}
+
+.order-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.order-header {
+  background-color: #f9fafb;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-header h3 {
+  margin: 0;
+  color: #374151;
+}
+
+.order-header span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-table th, .order-table td {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-table th {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-weight: 600;
+}
+
+.order-table tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+.order-table tfoot td {
+  background-color: #f3f4f6;
+  border-bottom: none;
+}
