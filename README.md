@@ -42,15 +42,15 @@ This application utilizes a decentralized Context API approach to avoid prop-dri
 * `ProductContext`: Handles data fetching, client-side caching, and complex filtering algorithms.
 * `CartContext` & `OrderContext`: Manages transactional state and purchase history.
 
-## 🧪 Demo Credentials
-If you wish to test the live application without registering:
-* **Email:** codingninjas@codingninjas.com
-* **Password:** codingninjas
+## Demo Login
+- **Email:** codingninjas@codingninjas.com
+- **Password:** codingninjas
 
-## To run locally:
-```bash
-npm install && npm start
-```
+## Live Demo
+- **Netlify Link:** http://fascinating-dodol-0861f4.netlify.app
+- **Site Password (if requested):** My-Drop-Site
+
+## Features
 *Note: Make sure you use Node.js 18+ for compatibility.*
 
 ## Project Structure
