@@ -32,24 +32,33 @@ export const CartProvider = ({ children }) => {
   }, [cart]);
 
   const addToCart = async (product) => {
-    if (!user) return false;
-
-    const existingItem = cart.find(item => item.id === product.id.toString());
-    if (existingItem) {
-      // Increase quantity
-      const newQuantity = existingItem.quantity + 1;
-      await updateDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), {
-        quantity: newQuantity
-      });
-      setCart(cart.map(item => item.id === product.id.toString() ? { ...item, quantity: newQuantity } : item));
-    } else {
-      // Add new item
-      const newItem = { ...product, quantity: 1 };
-      await setDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), newItem);
-      setCart([...cart, { ...newItem, id: product.id.toString() }]);
+    if (!user) {
+      toast.error("Please login first");
+      return false;
     }
-    toast.success("Product Added Successfully");
-    return true;
+
+    try {
+      const existingItem = cart.find(item => item.id === product.id.toString());
+      if (existingItem) {
+        // Increase quantity
+        const newQuantity = existingItem.quantity + 1;
+        await updateDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), {
+          quantity: newQuantity
+        });
+        setCart(cart.map(item => item.id === product.id.toString() ? { ...item, quantity: newQuantity } : item));
+      } else {
+        // Add new item
+        const newItem = { ...product, quantity: 1 };
+        await setDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), newItem);
+        setCart([...cart, { ...newItem, id: product.id.toString() }]);
+      }
+      toast.success("Product Added Successfully");
+      return true;
+    } catch (error) {
+      console.error(error);
+      toast.error("Error adding to cart: " + error.message);
+      return false;
+    }
   };
 
   const removeFromCart = async (productId) => {
