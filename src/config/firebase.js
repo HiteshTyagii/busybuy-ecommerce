@@ -3,12 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "demo-api-key",
-  authDomain: "demo-auth-domain.firebaseapp.com",
-  projectId: "demo-project-id",
-  storageBucket: "demo-storage-bucket.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef123456"
+  apiKey: "AIzaSyAhfUz-gDjfd02he2OiNyBsWhMBIppqlMw",
+  authDomain: "busybuy-b3b21.firebaseapp.com",
+  projectId: "busybuy-b3b21",
+  storageBucket: "busybuy-b3b21.firebasestorage.app",
+  messagingSenderId: "350604267077",
+  appId: "1:350604267077:web:c4b073b8e1af6305195d2c",
+  measurementId: "G-T1LKHJJCN1"
 };
 
 const app = initializeApp(firebaseConfig);
