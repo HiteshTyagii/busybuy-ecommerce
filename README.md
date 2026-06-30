@@ -47,7 +47,7 @@ This application utilizes a decentralized Context API approach to avoid prop-dri
 - **Password:** codingninjas
 
 ## Live Demo
-- **Netlify Link:** http://fascinating-dodol-0861f4.netlify.app
+- **Netlify Link:** http://soft-gnome-771a02.netlify.app
 - **Site Password (if requested):** My-Drop-Site
 
 ## Features
