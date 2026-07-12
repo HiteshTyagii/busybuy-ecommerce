@@ -42,12 +42,12 @@ const ProductCard = ({ product }) => {
               <button className="qty-btn" onClick={() => changeQuantity(product.id, 1)}>+</button>
             </div>
             <button className="btn-remove" title="Remove from Cart" onClick={handleRemoveFromCart}>
-              Remove From Cart
+              Remove from Cart
             </button>
           </div>
         ) : (
           <button className="btn-add" title="Add to Cart" onClick={handleAddToCart}>
-            Add To Cart
+            Add to Cart
           </button>
         )}
       </div>
