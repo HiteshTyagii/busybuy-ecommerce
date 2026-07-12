@@ -14,7 +14,6 @@ const ProductCard = ({ product }) => {
   const cartItem = cart?.find(item => item.id === product.id.toString());
 
   const handleAddToCart = async () => {
-    alert('Add To Cart clicked! user=' + !!user);
     if (!user) {
       navigate('/signin');
       return;
