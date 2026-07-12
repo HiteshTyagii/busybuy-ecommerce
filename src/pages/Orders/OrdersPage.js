@@ -20,7 +20,7 @@ const OrdersPage = () => {
         <div key={order.id} className="order-card">
           <div className="order-header">
             <h3>Order #{orders.length - index}</h3>
-            <span>Ordered On: {new Date(order.date).toLocaleDateString()}</span>
+            <span>Ordered On: {order.date.split('T')[0]}</span>
           </div>
           <table className="order-table">
             <thead>

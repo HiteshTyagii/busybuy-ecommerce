@@ -16,7 +16,6 @@ function App() {
   const { user, loading } = useAuth() || { user: null, loading: false };
 
   const ProtectedRoute = ({ children }) => {
-    if (loading) return <div>Loading...</div>;
     if (!user) {
       return <Navigate to="/signin" replace />;
     }
