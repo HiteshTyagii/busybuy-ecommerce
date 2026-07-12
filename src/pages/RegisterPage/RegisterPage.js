@@ -1,35 +1,59 @@
-import React, { useRef, useEffect, useContext } from "react";
-import styles from "./RegisterPage.module.css";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
+import './RegisterPage.css';
 
 const RegisterPage = () => {
-// Create your state or ref here to store the value of the input fields
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const { signup } = useAuth() || { signup: async () => {} };
+  const navigate = useNavigate();
 
-// write the submit handler function to validate the forma and signup the user 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || formData.password.length < 6) {
+      toast.error('Please enter valid data!');
+      return;
+    }
+
+    try {
+      await signup(formData.name, formData.email, formData.password);
+      navigate('/');
+    } catch (error) {
+      toast.error('Failed to create account: ' + error.message);
+    }
+  };
+
   return (
-    <div className={styles.formContainer}>
-      <form className={styles.form} onSubmit={onSubmitHandler}>
-        <h2 className={styles.loginTitle}>Sign Up</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Enter Name"
-          className={styles.loginInput}
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>Sign Up</h2>
+        <input 
+          type="text" 
+          name="name" 
+          placeholder="Enter Name" 
+          value={formData.name} 
+          onChange={handleChange} 
         />
-        <input
-          type="email"
-          name="email"
-          className={styles.loginInput}
-          placeholder="Enter Email"
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Enter Email" 
+          value={formData.email} 
+          onChange={handleChange} 
         />
-        <input
-          type="password"
-          name="password"
-          className={styles.loginInput}
-          placeholder="Enter Password"
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Enter Password" 
+          value={formData.password} 
+          onChange={handleChange} 
         />
-        <button className={styles.loginBtn}>
-          {loading ? "..." : "Sign Up"}
-        </button>
+        <button type="submit" className="auth-btn">Sign Up</button>
       </form>
     </div>
   );

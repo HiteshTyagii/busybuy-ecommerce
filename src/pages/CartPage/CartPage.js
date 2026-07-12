@@ -1,26 +1,39 @@
-import React, { useEffect, useContext, useState } from "react";
-import Loader from "../../components/UI/Loader/Loader";
-import styles from "./CartPage.module.css";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../../context/CartContext';
+import { useOrder } from '../../context/OrderContext';
+import ProductCard from '../../components/ProductCard/ProductCard';
+import './CartPage.css';
 
 const CartPage = () => {
+  const { cart, totalPrice, removeFromCart, changeQuantity } = useCart() || { cart: [], totalPrice: 0, removeFromCart: () => {}, changeQuantity: () => {} };
+  const { purchase } = useOrder() || { purchase: () => {} };
+  const navigate = useNavigate();
 
-  // Write logic to Clear user cart
+  const handlePurchase = async () => {
+    await purchase();
+    navigate('/myorders');
+  };
 
-  // Write logic to Fetch user cart products
-
-  // Write logic to Remove product from cart and cart products list
-
-  // Write logic to Remove product from the database
-
-  if (loading) return <Loader />;
+  if (cart.length === 0) {
+    return (
+      <div className="cart-empty">
+        <h2>Your Cart is Empty!</h2>
+      </div>
+    );
+  }
 
   return (
-    <div className={styles.cartPageContainer}>
-      (
-      {/* write code here to display the item in the cart if there are items present in the cart. */}
-      ) : (
-        <h1>Cart is Empty!</h1>
-      )
+    <div className="cart-container">
+      <aside className="cart-summary">
+        <h2>Total Price: ₹{totalPrice}/-</h2>
+        <button className="purchase-btn" onClick={handlePurchase}>Purchase</button>
+      </aside>
+      <div className="cart-items">
+        {cart.map(item => (
+          <ProductCard key={item.id} product={item} />
+        ))}
+      </div>
     </div>
   );
 };

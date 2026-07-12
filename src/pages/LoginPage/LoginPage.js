@@ -1,34 +1,55 @@
-import React, { useRef, useContext, useEffect } from "react";
-import styles from "./LoginPage.module.css";
-import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { toast } from 'react-toastify';
+import '../RegisterPage/RegisterPage.css';
 
 const LoginPage = () => {
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const { login } = useAuth() || { login: async () => {} };
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.email || formData.password.length < 6) {
+      toast.error('Please enter valid data');
+      return;
+    }
+
+    try {
+      await login(formData.email, formData.password);
+      navigate('/');
+    } catch (error) {
+      toast.error('Please enter valid data');
+    }
+  };
 
   return (
-    <div className={styles.formContainer}>
-      <form className={styles.form}>
-        <h2 className={styles.loginTitle}>Sign In</h2>
-        <input
-          type="email"
-          name="email"
-          placeholder="Enter Email"
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2>Sign In</h2>
+        <input 
+          type="email" 
+          name="email" 
+          placeholder="Enter Email" 
+          value={formData.email} 
+          onChange={handleChange} 
         />
-        <input
-          type="password"
-          name="password"
-          placeholder="Enter Password"
+        <input 
+          type="password" 
+          name="password" 
+          placeholder="Enter Password" 
+          value={formData.password} 
+          onChange={handleChange} 
         />
-        <button className={styles.loginBtn}>
-          {loading ? "..." : "Sign In"}
-        </button>
-        <NavLink
-          style={{
-            textDecoration: "none",
-            color: "#224957",
-            fontFamily: "Quicksand",
-          }}>
-          <p style={{ fontWeight: "600", margin: 0 }}>Or SignUp instead</p>
-        </NavLink>
+        <button type="submit" className="auth-btn">Sign In</button>
+        <p className="redirect-text" onClick={() => navigate('/signup')}>
+          Or SignUp instead
+        </p>
       </form>
     </div>
   );

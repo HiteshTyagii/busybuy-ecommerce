@@ -1,9 +1,11 @@
-import styles from "./NotFound.module.css";
+import React from 'react';
 
-export default function NotFoundPage() {
+const NotFoundPage = () => {
   return (
-    <div className={styles.notFound}>
-      <h1>Page not found</h1>
+    <div style={{ textAlign: 'center', marginTop: '50px' }}>
+      <h1>Page Not Found</h1>
     </div>
   );
-}
+};
+
+export default NotFoundPage;
