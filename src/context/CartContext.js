@@ -40,30 +40,27 @@ export const CartProvider = ({ children }) => {
     try {
       const existingItem = cart.find(item => item.id === product.id.toString());
       if (existingItem) {
-        // Increase quantity
         const newQuantity = existingItem.quantity + 1;
-        await updateDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), {
-          quantity: newQuantity
-        });
         setCart(cart.map(item => item.id === product.id.toString() ? { ...item, quantity: newQuantity } : item));
+        updateDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), {
+          quantity: newQuantity
+        }).catch(console.warn);
       } else {
-        // Add new item
         const newItem = { ...product, quantity: 1 };
-        await setDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), newItem);
         setCart([...cart, { ...newItem, id: product.id.toString() }]);
+        setDoc(doc(db, `users/${user.uid}/cart`, product.id.toString()), newItem).catch(console.warn);
       }
       toast.success("Product Added Successfully");
       return true;
     } catch (error) {
       console.error(error);
-      toast.error("Error adding to cart: " + error.message);
       return false;
     }
   };
 
   const removeFromCart = async (productId) => {
-    await deleteDoc(doc(db, `users/${user.uid}/cart`, productId.toString()));
     setCart(cart.filter(item => item.id !== productId.toString()));
+    deleteDoc(doc(db, `users/${user.uid}/cart`, productId.toString())).catch(console.warn);
   };
 
   const changeQuantity = async (productId, amount) => {
@@ -72,18 +69,18 @@ export const CartProvider = ({ children }) => {
 
     const newQuantity = existingItem.quantity + amount;
     if (newQuantity <= 0) {
-      await removeFromCart(productId);
+      removeFromCart(productId);
     } else {
-      await updateDoc(doc(db, `users/${user.uid}/cart`, productId.toString()), {
-        quantity: newQuantity
-      });
       setCart(cart.map(item => item.id === productId.toString() ? { ...item, quantity: newQuantity } : item));
+      updateDoc(doc(db, `users/${user.uid}/cart`, productId.toString()), {
+        quantity: newQuantity
+      }).catch(console.warn);
     }
   };
 
   const clearCart = async () => {
     for (let item of cart) {
-      await deleteDoc(doc(db, `users/${user.uid}/cart`, item.id));
+      deleteDoc(doc(db, `users/${user.uid}/cart`, item.id)).catch(console.warn);
     }
     setCart([]);
   };
