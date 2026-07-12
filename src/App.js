@@ -17,7 +17,7 @@ function App() {
 
   const ProtectedRoute = ({ children }) => {
     if (!user) {
-      return <Navigate to="/signin" replace />;
+      return <LoginPage />;
     }
     return children;
   };
