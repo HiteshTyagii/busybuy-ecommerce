@@ -22,6 +22,8 @@ function App() {
     return children;
   };
 
+  if (loading) return null;
+
   return (
     <div className="App">
         <ToastContainer
