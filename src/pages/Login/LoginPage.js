@@ -6,7 +6,7 @@ import '../Register/RegisterPage.css';
 
 const LoginPage = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
-  const { login } = useAuth();
+  const { login } = useAuth() || { login: async () => {} };
   const navigate = useNavigate();
 
   const handleChange = (e) => {

@@ -3,7 +3,7 @@ import { useOrder } from '../../context/OrderContext';
 import './OrdersPage.css';
 
 const OrdersPage = () => {
-  const { orders } = useOrder();
+  const { orders } = useOrder() || { orders: [] };
 
   if (orders.length === 0) {
     return (

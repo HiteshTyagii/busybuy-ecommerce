@@ -10,8 +10,8 @@ export const useOrder = () => useContext(OrderContext);
 
 export const OrderProvider = ({ children }) => {
   const [orders, setOrders] = useState([]);
-  const { user } = useAuth();
-  const { cart, totalPrice, clearCart } = useCart();
+  const { user } = useAuth() || { user: null };
+  const { cart, totalPrice, clearCart } = useCart() || { cart: [], totalPrice: 0, clearCart: () => {} };
 
   useEffect(() => {
     if (user) {

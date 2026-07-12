@@ -5,8 +5,8 @@ import { useCart } from '../../context/CartContext';
 import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
-  const { user } = useAuth();
-  const { addToCart, removeFromCart, changeQuantity, cart } = useCart();
+  const { user } = useAuth() || { user: null };
+  const { addToCart, removeFromCart, changeQuantity, cart } = useCart() || { cart: [], addToCart: ()=>{}, removeFromCart: ()=>{}, changeQuantity: ()=>{} };
   const location = useLocation();
   const navigate = useNavigate();
 

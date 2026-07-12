@@ -11,7 +11,7 @@ export const useCart = () => useContext(CartContext);
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { user } = useAuth();
+  const { user } = useAuth() || { user: null };
 
   useEffect(() => {
     if (user) {
