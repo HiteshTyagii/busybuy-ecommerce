@@ -6,12 +6,12 @@ import './ProductCard.css';
 
 const ProductCard = ({ product }) => {
   const { user } = useAuth() || { user: null };
-  const { addToCart, removeFromCart, changeQuantity, cart } = useCart() || { cart: [], addToCart: ()=>{}, removeFromCart: ()=>{}, changeQuantity: ()=>{} };
+  const { addToCart, removeFromCart, changeQuantity } = useCart() || { addToCart: ()=>{}, removeFromCart: ()=>{}, changeQuantity: ()=>{} };
   const location = useLocation();
   const navigate = useNavigate();
 
   const isCartPage = location.pathname === '/cart';
-  const cartItem = cart?.find(item => item.id === product.id.toString());
+
 
   const handleAddToCart = async () => {
     if (!user) {

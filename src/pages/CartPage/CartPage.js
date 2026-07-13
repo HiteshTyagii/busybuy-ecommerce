@@ -6,7 +6,7 @@ import ProductCard from '../../components/ProductCard/ProductCard';
 import './CartPage.css';
 
 const CartPage = () => {
-  const { cart, totalPrice, removeFromCart, changeQuantity } = useCart() || { cart: [], totalPrice: 0, removeFromCart: () => {}, changeQuantity: () => {} };
+  const { cart, totalPrice } = useCart() || { cart: [], totalPrice: 0 };
   const { purchase } = useOrder() || { purchase: () => {} };
   const navigate = useNavigate();
 

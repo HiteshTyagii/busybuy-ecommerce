@@ -1,6 +1,6 @@
 import React from 'react';
 import FilterSidebar from '../../components/FilterSidebar/FilterSidebar';
-import ProductCard from '../../components/ProductCard/ProductCard';
+
 import ProductList from '../../components/Product/ProductList/ProductList';
 import { useProduct } from '../../context/ProductContext';
 import ClipLoader from 'react-spinners/ClipLoader';

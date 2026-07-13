@@ -3,13 +3,13 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Navbar from "./components/Navbar/Navbar";
-import { Routes, Route, Navigate } from "react-router-dom";
-import HomePage from "./pages/Home/HomePage";
-import RegisterPage from "./pages/Register/RegisterPage";
-import LoginPage from "./pages/Login/LoginPage";
-import CartPage from "./pages/Cart/CartPage";
-import OrdersPage from "./pages/Orders/OrdersPage";
-import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage/HomePage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import CartPage from "./pages/CartPage/CartPage";
+import OrdersPage from "./pages/OrdersPage/OrdersPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { useAuth } from "./context/AuthContext";
 
 function App() {

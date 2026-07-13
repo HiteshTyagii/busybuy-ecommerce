@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 //Icons..
@@ -11,7 +11,7 @@ import Cart from "../../assets/cart.png";
 import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
+  const [click] = useState(false);
 
   const { user, logout } = useAuth() || { user: null, logout: () => {} };
   const isAuthenticated = !!user;
