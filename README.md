@@ -5,7 +5,7 @@
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![Netlify](https://img.shields.io/badge/netlify-%23000000.svg?style=for-the-badge&logo=netlify&logoColor=#00C7B7)
 
-> **Live Application:** [BusyBuy Demo](http://steady-ganache-c917c7.netlify.app) *(Password: My-Drop-Site)*
+> **Live Application:** [https://busybuyecommerce.netlify.app/](https://busybuyecommerce.netlify.app/)
 
 A high-performance, robust E-Commerce web application engineered with React and Firebase. This project emphasizes clean architecture, modular component design, and seamless state management.
 
@@ -47,8 +47,7 @@ This application utilizes a decentralized Context API approach to avoid prop-dri
 - **Password:** codingninjas
 
 ## Live Demo
-- **Netlify Link:** http://soft-gnome-771a02.netlify.app
-- **Site Password (if requested):** My-Drop-Site
+- **Netlify Link:** https://busybuyecommerce.netlify.app/
 
 ## Features
 *Note: Make sure you use Node.js 18+ for compatibility.*
